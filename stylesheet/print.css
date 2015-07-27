@@ -1,0 +1,14 @@
+#banner,
+#header div,
+#primary_communication,
+#footer p,
+#session_data,
+#term_links { display: none; }
+
+.generic { float: none; }
+
+#wrapper { width: auto; border: none; }
+
+#primary_content, #secondary_content { width: auto; }
+
+body { background-color: #fff; }

@@ -1,0 +1,112 @@
+#banner { width: 94em; margin: 0 auto; padding: 0 2em; background: url(/assets/header_background.jpg) top repeat-x #fff;
+	border-top: none; height: 57px; }
+  #banner p { display: none; }
+  #banner h1 { text-indent: -9999em; height: 53px; background: url(../images/banner_logo.jpg) top left no-repeat transparent; margin: 0; }
+
+#secondary_content { border-top: none; }
+
+#communication p, p.error { border: 1px solid; border-top: 0.5em solid; padding: 1em; }
+  #communication #error, p.error { color: #910701; }
+  #communication #notice { color: #095906; }
+  #communication #warning { color: #110659; }
+
+#errorExplanation { width: 50em; border: 1px solid #922; padding-bottom: 1.5em; margin-bottom: 1.5em; }
+  #errorExplanation h2 { text-align: left; font-weight: bold; padding: 0.833333em; font-size: 1.2em;
+    margin-bottom: 1.25em; background-color: #922; color: #fff; }
+  #errorExplanation p { margin: 0 1em 1.5em; font-size: 1.2em; }
+  #errorExplanation ul { font-size: 1em; margin: 0 1em 1.5em; padding-left: 0.5em; list-style-type: square; }
+
+table {clear: left;}
+  thead tr { background-color: #ddd; }
+  tbody tr.subhead { background-color: #e3e3e3; }
+  tr.even { background-color: #eaeaea; }
+  tbody tr:hover, tbody tr.hover { background-color: #bee2f2; }
+  th { font-weight: bold; }
+  td, th { padding: 0.25em 0.5em; border-right: 1px solid #fff; vertical-align: top; }
+  table.sortable tr .header { background: url(/assets/table_bg.gif) no-repeat center left; cursor: pointer; padding-left: 14px;}
+  table.sortable tr .headerSortUp,
+  table.sortable tr .headerSortDown { background-color: #5E0501; color: #fff;}
+  table.sortable tr .headerSortUp { background-image: url(/assets/table_asc.gif); }
+  table.sortable tr .headerSortDown { background-image: url(/assets/table_desc.gif ); }
+
+#term_links { list-style-type: none; padding: 0; margin: 0; float: left; width: 100%; border-bottom: 1px solid #5E0501;}
+  #term_links li { float: left; padding: 0; margin: 0 1em;}
+  #term_links li.daily { float: right; }
+  #term_links a { display: block; padding: 0.5em 1em; border: 1px solid; position: relative; top: 1px; }
+  #term_links a:visited { color: #5E0501; }
+  #term_links a.current { background-color: #ddd; border-bottom: 1px solid #ddd;}
+  #term_links a:hover { text-decoration: underline; }
+
+#schedule { width: 100%; }
+
+#course_search { list-style-type: none; margin: 0 0 1.5em 0; float: left; border: 1px solid #5E0501; border-top: 0.5em solid #5E0501; background-color: #eaeaea; width: 100%;}
+  #course_search li { float: left; padding: 1em 0; margin: 0 0 0 1em; }
+
+#search_results { clear: left; }
+  #search_results table { width: 100%; }
+
+.center { text-align: center; }
+
+#spinner { display: none; margin: 0 45px;}
+
+.errors { color: #922; border: 1px solid; margin-bottom: 1.5em; }
+  .errors h3 { background-color: #922; color: #fff; padding: 0.5em; }
+  .errors ul { margin: 1em; }
+
+.warnings { color: #226; border: 1px solid; margin-bottom: 1.5em; }
+  .warnings h3 { background-color: #226; color: #fff; padding: 0.5em; }
+  .warnings ul { margin: 1em; }
+  
+.pagination { margin: 0 auto 1.5em; font-size:1.2em; line-height:1.5em; text-align: center; }
+  .pagination a, .pagination span { border: 1px solid; padding: 0.5em 1em; }
+  
+a.button { border: 1px solid #5e0501; border-top: 0.5em solid #5e0501; padding: 0.5em; font-weight: bold; cursor: wait; }
+
+#session_data { clear: both; border: 1px solid #aaa; background-color: #eaeaea; padding: 1.5em 1.5em 0; }
+#session_data p + h2 { border-top: 1px solid #aaa; padding-top: 0.5em; }
+
+.hover { background-color: #bee2f2;}
+
+.cohort { min-height: 1.5em; }
+
+td.emphasis { background-color: #5e0501; color: #fff; }
+
+.schedule_grid { border: 1px solid; }
+.schedule_grid tr { border: 1px solid; }
+.schedule_grid th { border: 1px solid; }
+.schedule_grid td { border: 1px solid; }
+.schedule_grid .location { font-size: 0.8em; font-style: italic; display: block;}
+.schedule_grid .course_title { font-size: 0.8em; display: block; }
+.schedule_grid tbody td { background-color: #ddd; }
+.schedule_grid tbody tr:hover td { background-color: #bee2f2; }
+.schedule_grid tbody td.no_course { background-color: #fff; border-left: 1px solid #eaeaea; border-right: none; padding: 0 0.25em; }
+.schedule_grid tbody tr:hover td.no_course { background-color: #d4ebf7;}
+.schedule_grid th span { display: block; font-size: 0.8em; font-weight: normal; }
+
+.course_info_dialog h2 {
+  font-weight: bold;
+  font-size: 1em;
+}
+.course_info_dialog h3 {
+  font-weight: bold;
+  font-size: 1em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1em;
+}
+.course_info_dialog .ui-dialog-title { font-size: 1.2em; }
+.course_info_dialog ul {
+  list-style-type: square;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+.course_info_dialog li {
+  list-style-type: square;
+  font-size: inherit;
+  line-height: inherit;
+}
+.course_info_dialog p { margin-bottom: 1em; }
+fieldset.advanced_filter legend + div {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+}

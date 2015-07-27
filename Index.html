@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>Schedule of Classes | SOLAR</title>
+
+  <link href="stylesheet/jquery-ui-1.9.2.custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="stylesheet/typogridphy.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="stylesheet/solar.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="stylesheet/print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="stylesheet/jquery.dataTables.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <!--[if IE 7]>
+    <link href="/assets/ie7-dddaa63a3231f3f957f2331bd29fde4e.css" media="all" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+  <script src="/assets/jquery-1.8.3-611736147576022239e8f5838643050a.js" type="text/javascript"></script>
+  <script src="/assets/jquery-ui-1.9.2/jquery-ui-1.9.2.custom-b4603efc283fb5ab33f3d1704b5fe726.js" type="text/javascript"></script>
+  <script src="/assets/jquery_ujs-f011af30dbc7573469475ff97ebfaf8b.js" type="text/javascript"></script>
+  <script src="/assets/datatables-1.9.4/jquery.dataTables-c9a423249d5654b52995638e1a3133fc.js" type="text/javascript"></script>
+  <script src="/assets/application-edefc04eb9e91d651638735528b67a55.js" type="text/javascript"></script>
+    <script src="https://static.reed.edu/js/spin/spin.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    var opts = {
+      lines: 12, // The number of lines to draw
+      length: 18, // The length of each line
+      width: 9, // The line thickness
+      radius: 25, // The radius of the inner circle
+      corners: 1, // Corner roundness (0..1)
+      rotate: 0, // The rotation offset
+      direction: 1, // 1: clockwise, -1: counterclockwise
+      color: '#5e0501', // #rgb or #rrggbb
+      speed: 0.8, // Rounds per second
+      trail: 52, // Afterglow percentage
+      shadow: false, // Whether to render a shadow
+      hwaccel: false, // Whether to use hardware acceleration
+      className: 'tab_spinner', // The CSS class to assign to the spinner
+      zIndex: 2e9, // The z-index (defaults to 2000000000)
+      top: 'bottom', // Top position relative to parent in px
+      left: 'auto' // Left position relative to parent in px
+    };
+    var spinner = new Spinner(opts);
+
+    function start_datatable_spinner() {
+      spinner.spin();
+      tmp_wrapper = document.createElement("div");
+      spinner_div = document.createElement("div");
+      spinner_div.className = 'table_spinner';
+      spinner_div.appendChild(spinner.el);
+      tmp_wrapper.appendChild(spinner_div)
+      return (tmp_wrapper.innerHTML);
+    }
+
+    function stop_datatable_spinner(selector){
+      if (spinner) {
+        spinner.stop();
+        $(selector + ' div.table_spinner').remove();
+        $(selector + ' .dataTables_empty').html('Error: schedule could not be loaded.');
+      }
+    }
+
+
+    $(document).ready(function(){
+      $( "#tabs" ).tabs({
+        beforeLoad: function( event, ui ) {
+          if ( ui.tab.data( "loaded" ) ) {
+              event.preventDefault();
+              return;
+          }
+   
+          ui.jqXHR.success(function() {
+            ui.tab.data( "loaded", true );
+          });
+
+          ui.jqXHR.error(function() {
+            ui.panel.html(
+            "Unable to load this tab. An administrator has been notified and will try to fix the problem as soon as possible.");
+          });
+        },
+        active: 2,
+      });
+    });
+  </script>
+
+  <link href="stylesheet/class_schedule.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body id="main">
+
+<div id="banner">
+  <h1>SOLAR | reed.edu</h1>
+  <p><a href="#primary" title="Skip header">Skip to primary content</a> | <a href="#secondary" title="Skip primary content">Skip to course search</a></p>
+</div>
+
+<div id="wrapper">
+  <div id="header">
+    <div class="end twotwenty right-float">
+      <ul>
+        <li><a href="/" title="Go to SOLAR registration">SOLAR Home</a></li>
+      </ul>
+
+    </div>
+    <h1>Schedule of Classes</h1>
+  </div>
+    
+  <div id="primary" class="nineforty">
+    <div id="primary_content">
+      <noscript>
+  <p>This page requires javascript to be enabled. Please enable javascript and reload the page.</p>
+</noscript>
+
+<div> Hello! Is this working? </div>
+
+<div id="tabs">
+  <ul>
+      <li><a href="https://solar.reed.edu/class_schedule/201503" title="View Spring 2015 schedule of classes"><span>Spring 2015</span></a></li>
+      <li><a href="https://solar.reed.edu/class_schedule/201504" title="View Summer 2015 schedule of classes"><span>Summer 2015</span></a></li>
+      <li><a href="https://solar.reed.edu/class_schedule/201601" title="View Fall 2015 schedule of classes"><span>Fall 2015</span></a></li>
+      <li><a href="https://solar.reed.edu/class_schedule/201603" title="View Spring 2016 schedule of classes"><span>Spring 2016</span></a></li>
+    <li><a href="https://solar.reed.edu/class_schedule/info" title="Registration and class schedule information"><span>More Info</span></a></li>
+  </ul>
+</div>
+
+    </div> <!-- /primary_content -->
+  </div> <!-- /primary -->
+  
+  
+  <div id="footer">
+    <p>Got feedback? <a href="/contact" title="Send in your questions/comments">Contact the registrar&#x27;s office</a></p>
+  </div <!-- /footer -->
+
+</div> <!-- /wrapper -->
+
+</body>
+</html>

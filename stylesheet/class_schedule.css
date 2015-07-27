@@ -1,0 +1,188 @@
+.ui-tooltip { background: #fffec7; }
+.ui-tooltip p {
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+.no_wrap { white-space: nowrap; }
+.table_spinner {
+	position: relative;
+	left: 440px;
+	top: 100px;
+	height: 50px;
+	width: 50px;
+}
+#tabs { min-height: 400px; }
+.inuse { background-color: #cbf0c7; }
+.sched_container { font-size: 0.9em; }
+.dataTables_wrapper { margin-bottom: 1.5em; }
+.dataTables_wrapper .top, .dataTables_wrapper .bottom {
+	margin: 5px 0;
+	float: left;
+	width: 100%;
+}
+.dataTables_filter, .dataTables_paginate, .dataTables_length, .dataTables_info {
+	float: left;
+	text-align: left;
+	clear: none;
+}
+.dataTables_filter label { font-weight: bold; }
+.dataTables_filter input { width: 200px }
+.dataTables_paginate {
+	float: right;
+	padding: 5px 0;
+}
+.dataTables_length, .dataTables_info {
+	line-height: 2.5em;
+	padding-right: 5px;
+}
+table.dataTable td { padding: 5px 5px; }
+table.dataTable thead th {
+	text-align: left;
+	padding: 5px 15px 5px 5px;
+	background-color: #fff;
+}
+.section_note_text { display: none; }
+.dataTables_empty {
+	background-color: #fff;
+	height: 250px;
+}
+.columns_wrapper {
+	background: #eee;
+	padding: 5px 10px 10px;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	clear: both;
+}
+.column {
+	width: 25%;
+	float: left;
+}
+fieldset.advanced_filter label {
+	font-weight: bold;
+	display: block;
+	margin-top: 5px;
+}
+fieldset.advanced_filter select { width: 160px; }
+fieldset.advanced_filter + label + div { display: block; }
+fieldset.advanced_filter legend { display: none; }
+fieldset.advanced_filter button.advanced_search_button {
+	background-color: #fffec7;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	color: #000;
+	padding: 5px 10px 5px 30px;
+	font-size: .9em;
+	display: none;
+}
+.plus_search { background: url("/assets/magnifier--pencil.png") no-repeat scroll 8px center transparent; }
+.minus_search { background: url("/assets/magnifier--minus.png") no-repeat scroll 8px center transparent; }
+
+ @media  only screen and (max-width: 760px) {
+#header h1, .nineforty, #header, #wrapper, #banner { width: auto; }
+.twotwenty { display: none; }
+.column { width: 50%; }
+.sched_container { font-size: 1.1em; }
+/* Force table to not be like tables anymore */
+table.dataTable, thead, tbody, th, td, tr { display: block; }
+table.dataTable td { padding: 5px 5px 5px 33%; }
+table.dataTable td.dataTables_empty { padding: 10px 5px 5px 5px; }
+table.dataTable td.center { text-align: left; }
+table.dataTable { min-width: 250px; }
+table.dataTable tr.odd td.sorting_1 { background-color: inherit; }
+table.dataTable tr.odd td.sorting_2 { background-color: inherit; }
+table.dataTable tr.odd td.sorting_3 { background-color: inherit; }
+table.dataTable tr.even td.sorting_1 { background-color: inherit; }
+table.dataTable tr.even td.sorting_2 { background-color: inherit; }
+table.dataTable tr.even td.sorting_3 { background-color: inherit; }
+fieldset.advanced_filter button.advanced_search_button { display: block; }
+fieldset.advanced_filter button.advanced_search_button.minus_search {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom: 0;
+}
+.columns_wrapper { border-top-left-radius: 0; }
+.table_spinner {
+	position: relative;
+	left: 50%;
+	top: 35%;
+	height: 50px;
+	width: 50px;
+}
+/* Hide table headers (but not display: none;, for accessibility) */
+thead tr {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+tr { border: 1px solid #ccc; }
+td:not(.dataTables_empty) {
+	/* Behave  like a "row" */
+  border: none;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+	padding-left: 200px;
+	min-height: 1em;
+}
+td:not(.dataTables_empty):before {
+	/* Now like a table header */
+  position: absolute;
+	/* Top/left values mimic padding */
+  left: 6px;
+	width: 25%;
+	padding-right: 10px;
+	white-space: nowrap;
+	font-weight: bold;
+	border-right: 1px solid #ccc;
+}
+/* Label the data */
+td:nth-of-type(1):not(.dataTables_empty):before { content: "CRN"; }
+td:nth-of-type(2):before { content: "Note"; }
+td:nth-of-type(3):before { content: "Course"; }
+td:nth-of-type(4):before { content: "Title"; }
+td:nth-of-type(5):before { content: "Xlist"; }
+td:nth-of-type(6):before { content: "Instructor"; }
+td:nth-of-type(7):before { content: "Units"; }
+td:nth-of-type(8):before { content: "Days"; }
+td:nth-of-type(9):before { content: "Time"; }
+td:nth-of-type(10):before { content: "Location"; }
+td:nth-of-type(11):before { content: "Status"; }
+td:nth-of-type(12):before { content: "Group"; }
+}
+ @media  only screen and (max-width: 520px) {
+#wrapper { padding: 0 1em; }
+.ui-tabs .ui-tabs-panel { padding: 1em 3px; }
+.ui-tabs .ui-tabs-nav li a {
+	padding-left: .5em;
+	padding-right: .5em;
+}
+.column {
+	clear: both;
+	width: 100%;
+}
+.dataTables_filter {
+	float: none;
+	text-align: center;
+	background: #eee;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+.dataTables_length, .dataTables_info {
+	float: none;
+	clear: both;
+	line-height: normal;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+.dataTables_paginate {
+	float: none;
+	text-align: center;
+}
+.dataTables_wrapper .bottom > div { margin: 5px 0; }
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	display: inline-block;
+	float: none;
+}
+}
