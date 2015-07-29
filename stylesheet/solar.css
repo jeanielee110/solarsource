@@ -1,4 +1,4 @@
-#banner { width: 94em; margin: 0 auto; padding: 0 2em; background: url(/assets/header_background.jpg) top repeat-x #fff;
+#banner { width: 94em; margin: 0 auto; padding: 0 2em; background: url(../images/header_background.jpg) top repeat-x #fff;
 	border-top: none; height: 57px; }
   #banner p { display: none; }
   #banner h1 { text-indent: -9999em; height: 53px; background: url(../images/banner_logo.jpg) top left no-repeat transparent; margin: 0; }
