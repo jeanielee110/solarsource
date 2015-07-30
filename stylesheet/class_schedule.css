@@ -75,8 +75,8 @@ fieldset.advanced_filter button.advanced_search_button {
 	font-size: .9em;
 	display: none;
 }
-.plus_search { background: url("/assets/magnifier--pencil.png") no-repeat scroll 8px center transparent; }
-.minus_search { background: url("/assets/magnifier--minus.png") no-repeat scroll 8px center transparent; }
+.plus_search { background: url("../images/magnifier--pencil.png") no-repeat scroll 8px center transparent; }
+.minus_search { background: url("../images/magnifier--minus.png") no-repeat scroll 8px center transparent; }
 
  @media  only screen and (max-width: 760px) {
 #header h1, .nineforty, #header, #wrapper, #banner { width: auto; }
