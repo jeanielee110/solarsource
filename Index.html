@@ -79,7 +79,7 @@
             "Unable to load this tab. An administrator has been notified and will try to fix the problem as soon as possible.");
           });
         },
-        active: 2,
+        active: 0,
       });
     });
   </script>
@@ -117,14 +117,12 @@
 
 <div id="tabs">
   <ul>
-      <li><a href="https://solar.reed.edu/class_schedule/201503" title="View Spring 2015 schedule of classes"><span>Spring 2015</span></a></li>
-      <li><a href="https://solar.reed.edu/class_schedule/201504" title="View Summer 2015 schedule of classes"><span>Summer 2015</span></a></li>
       <li><a href="#201601" title="View Fall 2015 schedule of classes"><span>Fall 2015</span></a></li>
-      <li><a href="https://solar.reed.edu/class_schedule/201603" title="View Spring 2016 schedule of classes"><span>Spring 2016</span></a></li>
-    <li><a href="https://solar.reed.edu/class_schedule/info" title="Registration and class schedule information"><span>More Info</span></a></li>
+      <li><a href="#201603"><span>Spring 2016</span></a></li>
+    <li><a href="#more_info" title="Registration and class schedule information"><span>More Info</span></a></li>
   </ul>
 
-  <div id="201601"> 
+<div id="201601"> 
 <div id="container_201601">
   <fieldset id="advanced_filter_201601" class="advanced_filter">
     <button class="advanced_search_button minus_search">Advanced Search</button>
@@ -307,23 +305,12 @@
       "bAutoWidth": false,
       "bDeferRender": true,
       "aaSorting": [[3, 'asc']],
-      "sAjaxSource": "https://solar.reed.edu/class_schedule/term/show/201601",
-      "fnServerData": function ( sSource, aoData, fnCallback, oSettings ) {
-        oSettings.jqXHR = $.ajax( {
-          "dataType": 'json',
-          "url": sSource,
-          "data": aoData,
-          "success": fnCallback,
-          "error": function() {
-            handle_xhr_error('#class_schedule_201601');
-          }
-        } );
-      },
       "fnInitComplete": function(oSettings, json){
-        set_search_options(this, json['search_opts']);
+        set_search_options(this, json_201601['search_opts']);
         // add aria-attr for accessibility
         $('#data-table_info').attr({ 'aria-relevant':'additions', 'aria-atomic':'true', 'aria-live':'polite' });
       },
+      "aaData": json_201601['aaData'],
       "aoColumns":[
         /* Term */      { "mData": "term",
                          "bVisible": false
@@ -461,9 +448,341 @@
     });
   });
 </script>
-</div>
+</div><!-- /201601 -->
+
+<div id="201603"> 
+<div id="container_201603">
+  <fieldset id="advanced_filter_201603" class="advanced_filter">
+    <button class="advanced_search_button minus_search">Advanced Search</button>
+    <div id="advanced_filter_fields_201603" class= 'columns_wrapper'>
+      <div class="column">
+        <label>Subject</label>
+        <div id="full_subject_filter_container_201603">
+          <select data-col="13" class="col_filter" />
+          
+  <a href="#" title="clear this field" class="clear_field">clear</a>
+
+        </div>
+        <label>Instructor</label>
+        <div id="instructor_filter_container_201603">
+          <select data-col="6" class="col_filter" />
+          
+  <a href="#" title="clear this field" class="clear_field">clear</a>
+
+        </div>
+      </div>
+      <div class="column">
+        <label>Status</label>
+        <div id="status_filter_container_201603">
+          <select data-col="11" class="col_filter" />
+          
+  <a href="#" title="clear this field" class="clear_field">clear</a>
+
+        </div>
+        <label>Group req.</label>
+        <div id="group_filter_container_201603">
+          <select data-col="12" class="col_filter" />
+          
+  <a href="#" title="clear this field" class="clear_field">clear</a>
+
+        </div>
+      </div>
+      <div class="column">
+        <label>Day</label>
+        <div id="day_filter_container_201603">
+          <select data-col="8" class="col_filter" />
+          
+  <a href="#" title="clear this field" class="clear_field">clear</a>
+
+        </div>
+        <label>Time</label>
+        <div id="time_filter_container_201603">
+          <select data-col="9" class="col_filter" />
+          
+  <a href="#" title="clear this field" class="clear_field">clear</a>
+
+        </div>
+      </div>
+      <div class="column">
+        <label>MALS only</label>
+        <div id="mals_filter_container_201603">
+          <input type="checkbox" value="Y" data-col="14" class="col_filter" />
+        </div>
+        <label>Exclude year-long</label>
+        <div id="year_long_filter_container_201603">
+          <input type="checkbox" value="N" data-col="15" class="col_filter" />
+        </div>
+      </div>
+      <div style="clear: both" />
+    </div>
+  </fieldset>
+  <table id="class_schedule_201603" class="sched_container">
+    <thead>
+      <tr>
+        <th>Term</th>
+        <th>CRN</th>
+        <th>Note</th>
+        <th>Course</th>
+        <th>Title</th>
+        <th>Xlist</th>
+        <th>Instructor</th>
+        <th>Units</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Group</th>
+        <th>Full Subject</th>
+        <th>Mals Only</th>
+        <th>Year-long</th>
+        <th>+</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
 </div>
 
+<script src="XHRs/201603.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+  var sched_table_201603;
+
+  function set_search_options(table, options){
+    fields = new Array();
+    $.each(options, function(key, value){
+      fields.push(key);
+    });
+
+    $.each(fields, function(index, field_name){
+      values_arr = options[field_name]
+      options_html = "<option value=\"\"></option>";
+
+      $.each(values_arr, function(index, value) {
+        options_html += "<option value=\"" + value + "\">" + value + "</option>";
+      });
+
+      container = '#' + field_name + '_filter_container_201603';
+      select = $(container + ' select')
+      select.append(options_html);
+      select.next('a.clear_field').click(function(){
+        $(this).prev('select').prop('selectedIndex', -1);
+        table_filter('#advanced_filter_fields_201603', table);
+      });
+    });
+
+    $('[id$="_filter_container_201603"] select, [id$="_filter_container_201603"] input:checkbox').change(function() {
+        table_filter('#advanced_filter_fields_201603', table);
+      });
+
+  }
+
+  function table_filter(column_filter_wrapper, table) {
+    $(column_filter_wrapper).find('.col_filter').each(function() {
+      column_index = $(this).attr('data-col');
+      reg_ex = false;
+      smart = true;
+      case_insensitive = true;
+      filter_val = $(this).find('option:checked').val() || '';
+
+      if(filter_val == ''){
+        filter_val = $(this).is(':checked') ? $(this).val() : ''
+      }
+
+      if (filter_val != "") {
+        $(this).parent('div').addClass('inuse');
+      } else {
+        $(this).parent('div').removeClass("inuse");
+      }
+
+      if ((column_index == 13) && filter_val != ''){
+        reg_ex = true;
+        filter_val = "^" + filter_val + "$";
+      }
+      if ((column_index == 8 || column_index == 12 || column_index == 14) && filter_val != ''){
+        case_insensitive = false;
+      }
+      table.fnFilter(filter_val, column_index, reg_ex, smart, true, case_insensitive);
+    });
+
+  }
+
+
+
+  $(document).ready(function(){
+    $('#advanced_filter_201603 button.advanced_search_button').click(function() {
+      $(this).toggleClass('minus_search');
+      $(this).toggleClass('plus_search');
+      $('#advanced_filter_fields_201603').slideToggle();
+    });
+
+    var defaultDisplayRows = 10;
+    if ( $(document).height() > 600 ){
+     defaultDisplayRows =  25;
+    };
+
+    var sched_table_201603 = $('#class_schedule_201603').dataTable({
+      "oLanguage": {
+        "sEmptyTable": "No schedule available for Fall 2015",
+        "sLoadingRecords": start_datatable_spinner()
+      },
+      "iDisplayLength": defaultDisplayRows,
+      "sDom": '<"top"fp>rt<"bottom"lip><"clear">',
+      "bAutoWidth": false,
+      "bDeferRender": true,
+      "aaSorting": [[3, 'asc']],
+      "fnInitComplete": function(oSettings, json){
+        set_search_options(this, json_201603['search_opts']);
+        // add aria-attr for accessibility
+        $('#data-table_info').attr({ 'aria-relevant':'additions', 'aria-atomic':'true', 'aria-live':'polite' });
+      },
+      "aaData": json_201603['aaData'],
+      "aoColumns":[
+        /* Term */      { "mData": "term",
+                         "bVisible": false
+                        },
+        /* CRN */       {
+                          "mData": "crn",
+                          "bSearchable": false
+                        },
+        /* Note */      {
+                          "mData": "note",
+                          "bSearchable": false,
+                          "bSortable": false,
+                          "sClass": "center",
+                          "mRender": function ( data, type, row ) {
+                            if (data === null) {
+                              return '&nbsp;';
+                            } else {
+                              return '<img src="/assets/exclamation-red-edfac60414896b6ee7b397b972ee8513.png" alt="Notes" class="note_tip"><div class="section_note_text">' + data + '</div>';
+                            }
+                          }
+                        },
+        /* Course */    { "mData": "course",
+                          "sClass": "no_wrap"},
+        /* Title */     {
+                          "mData": "title",
+                          "mRender": function ( data, type, row ) {
+                            if (data === null) {
+                              return '&nbsp;';
+                            } else {
+                              return data + '&nbsp;';
+                            }
+                          }
+                        },
+        /* Xlist */     { "mData": "xlist",
+                          "mRender": function ( data, type, row ) {
+                            if (data === null || data.length < 1) {
+                              return '&nbsp;';
+                            } else {
+                              return data.join(', ');
+                            }
+                          }
+                        },
+        /* Instructor */{ "mData": "instructor"},
+        /* Units */     {
+                          "mData": "units",
+                          "bSearchable": false,
+                          "sClass": "center"
+                        },
+        /* Days */      { "mData": "days",
+                          "mRender": function ( data, type, row ) {
+                            if (data === null || data.length < 1) {
+                              return '&nbsp;';
+                            } else {
+                              return data.join('<br/>');
+                            }
+                          }
+                        },
+        /* Time */      { "mData": "time",
+                          "sClass": "no_wrap",
+                          "mRender": function ( data, type, row ) {
+                            if (data === null || data.length < 1) {
+                              return '&nbsp;';
+                            } else {
+                              return data.join('<br/>');
+                            }
+                          }
+                        },
+        /* Location */  {
+                          "mData": "location",
+                          "sClass": "no_wrap",
+                          "mRender": function ( data, type, row ) {
+                            if (data === null || data.length < 1) {
+                              return '&nbsp;';
+                            } else {
+                              return data.join('<br/>');
+                            }
+                          },
+                          "bSearchable": false
+                        },
+        /* Status */    {
+                          "mData": "status",
+                          "bSearchable": false,
+                          "sClass": "center"
+                        },
+        /* Group */     { "mData": "group",
+                          "sClass": "center",
+                          "mRender": function ( data, type, row ) {
+                            if (data === null || data.length < 1) {
+                              return '&nbsp;';
+                            } else {
+                              return data.join('');
+                            }
+                          }
+                        },
+        /* Subject desc */ { "mData": "subject",
+                             "bVisible": false
+                           },
+        /* Is grad level */ { "mData": "graduate_level",
+                              "bVisible": false
+                            },
+        /* Is year_long */ { "mData": "year_long",
+                             "bVisible": false
+                            },
+        /* Is year_long */ { "mData": "add_me",
+                             "bSortable": false,
+                             "bVisible": false
+                            }
+    ]});
+
+    function handle_xhr_error(selector){
+      stop_datatable_spinner(selector);
+    }
+
+    $(document).on("draw", "", function (event) {
+      dt_filter_input = $('#class_schedule_201603_filter').find('input').first();
+      if (dt_filter_input.val() != '') {
+        dt_filter_input.addClass('inuse');
+      } else {
+        dt_filter_input.removeClass('inuse');
+      }
+      
+      $('.note_tip').tooltip({
+        items: 'img.note_tip',
+        content: function(){
+          return $(this).next('div.section_note_text').html();
+        }
+      });
+
+      $('.dataTable a.course_info').off('click');
+      $('.dataTable a.course_info').on('click', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        showCourseInfoInDialog($(this).attr('href'), {title: $(this).parent('td').prev('td').text().split(' ').slice(0,2).join(' ') + ': ' + $(this).text()});
+      });
+    });
+  });
+</script>
+</div><!-- /201603 -->
+
+<div id='more_info'>
+  <p>This is a place for more registration information</p>
+</div><!-- /more_info -->
+
+</div><!-- tabs -->
     </div> <!-- /primary_content -->
   </div> <!-- /primary -->
   

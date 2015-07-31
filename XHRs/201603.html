@@ -1,18 +1,18 @@
 
-<div id="container_201601">
-  <fieldset id="advanced_filter_201601" class="advanced_filter">
+<div id="container_201603">
+  <fieldset id="advanced_filter_201603" class="advanced_filter">
     <button class="advanced_search_button minus_search">Advanced Search</button>
-    <div id="advanced_filter_fields_201601" class= 'columns_wrapper'>
+    <div id="advanced_filter_fields_201603" class= 'columns_wrapper'>
       <div class="column">
         <label>Subject</label>
-        <div id="full_subject_filter_container_201601">
+        <div id="full_subject_filter_container_201603">
           <select data-col="13" class="col_filter" />
           
   <a href="#" title="clear this field" class="clear_field">clear</a>
 
         </div>
         <label>Instructor</label>
-        <div id="instructor_filter_container_201601">
+        <div id="instructor_filter_container_201603">
           <select data-col="6" class="col_filter" />
           
   <a href="#" title="clear this field" class="clear_field">clear</a>
@@ -21,14 +21,14 @@
       </div>
       <div class="column">
         <label>Status</label>
-        <div id="status_filter_container_201601">
+        <div id="status_filter_container_201603">
           <select data-col="11" class="col_filter" />
           
   <a href="#" title="clear this field" class="clear_field">clear</a>
 
         </div>
         <label>Group req.</label>
-        <div id="group_filter_container_201601">
+        <div id="group_filter_container_201603">
           <select data-col="12" class="col_filter" />
           
   <a href="#" title="clear this field" class="clear_field">clear</a>
@@ -37,14 +37,14 @@
       </div>
       <div class="column">
         <label>Day</label>
-        <div id="day_filter_container_201601">
+        <div id="day_filter_container_201603">
           <select data-col="8" class="col_filter" />
           
   <a href="#" title="clear this field" class="clear_field">clear</a>
 
         </div>
         <label>Time</label>
-        <div id="time_filter_container_201601">
+        <div id="time_filter_container_201603">
           <select data-col="9" class="col_filter" />
           
   <a href="#" title="clear this field" class="clear_field">clear</a>
@@ -53,18 +53,18 @@
       </div>
       <div class="column">
         <label>MALS only</label>
-        <div id="mals_filter_container_201601">
+        <div id="mals_filter_container_201603">
           <input type="checkbox" value="Y" data-col="14" class="col_filter" />
         </div>
         <label>Exclude year-long</label>
-        <div id="year_long_filter_container_201601">
+        <div id="year_long_filter_container_201603">
           <input type="checkbox" value="N" data-col="15" class="col_filter" />
         </div>
       </div>
       <div style="clear: both" />
     </div>
   </fieldset>
-  <table id="class_schedule_201601" class="sched_container">
+  <table id="class_schedule_201603" class="sched_container">
     <thead>
       <tr>
         <th>Term</th>
@@ -95,7 +95,7 @@
 
 <script type="text/javascript">
 
-  var sched_table_201601;
+  var sched_table_201603;
 
   function set_search_options(table, options){
     fields = new Array();
@@ -111,17 +111,17 @@
         options_html += "<option value=\"" + value + "\">" + value + "</option>";
       });
 
-      container = '#' + field_name + '_filter_container_201601';
+      container = '#' + field_name + '_filter_container_201603';
       select = $(container + ' select')
       select.append(options_html);
       select.next('a.clear_field').click(function(){
         $(this).prev('select').prop('selectedIndex', -1);
-        table_filter('#advanced_filter_fields_201601', table);
+        table_filter('#advanced_filter_fields_201603', table);
       });
     });
 
-    $('[id$="_filter_container_201601"] select, [id$="_filter_container_201601"] input:checkbox').change(function() {
-        table_filter('#advanced_filter_fields_201601', table);
+    $('[id$="_filter_container_201603"] select, [id$="_filter_container_201603"] input:checkbox').change(function() {
+        table_filter('#advanced_filter_fields_201603', table);
       });
 
   }
@@ -157,10 +157,10 @@
   }
 
   $(document).ready(function(){
-    $('#advanced_filter_201601 button.advanced_search_button').click(function() {
+    $('#advanced_filter_201603 button.advanced_search_button').click(function() {
       $(this).toggleClass('minus_search');
       $(this).toggleClass('plus_search');
-      $('#advanced_filter_fields_201601').slideToggle();
+      $('#advanced_filter_fields_201603').slideToggle();
     });
 
     var defaultDisplayRows = 10;
@@ -168,7 +168,7 @@
      defaultDisplayRows =  25;
     };
 
-    var sched_table_201601 = $('#class_schedule_201601').dataTable({
+    var sched_table_201603 = $('#class_schedule_201603').dataTable({
       "oLanguage": {
         "sEmptyTable": "No schedule available for Fall 2015",
         "sLoadingRecords": start_datatable_spinner()
@@ -185,7 +185,7 @@
           "data": aoData,
           "success": fnCallback,
           "error": function() {
-            handle_xhr_error('#class_schedule_201601');
+            handle_xhr_error('#class_schedule_201603');
           }
         } );
       },
@@ -308,7 +308,7 @@
     }
 
     $(document).on("draw", "", function (event) {
-      dt_filter_input = $('#class_schedule_201601_filter').find('input').first();
+      dt_filter_input = $('#class_schedule_201603_filter').find('input').first();
       if (dt_filter_input.val() != '') {
         dt_filter_input.addClass('inuse');
       } else {
